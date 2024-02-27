@@ -12,7 +12,8 @@ def one_hot(x,n):
 	o_h[np.arange(len(x)),x] = 1
 	return o_h
 
-def mnist(ntrain=60000,ntest=10000,onehot=False,subset=True,digit_range=[0,2],shuffle=True):
+def mnist(ntrain=60000,ntest=10000,onehot=False,subset=True,digit_range=None,shuffle=True):
+	digit_range = [0,2] if digit_range is None else digit_range
 	data_dir = os.path.join(datasets_dir,'mnist/')
 	fd = open(os.path.join(data_dir,'train-images-idx3-ubyte'))
 	loaded = np.fromfile(file=fd,dtype=np.uint8)
